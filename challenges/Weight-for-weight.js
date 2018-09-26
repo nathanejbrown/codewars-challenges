@@ -16,34 +16,12 @@
 // Don't modify the input
 // For C: The result is freed.
 
-function orderWeight(str) {
-    strArray = str.split(' ')
-    let numWeights = []
-    strArray.forEach((numString) => {
-        let counter = 0;
-        numString.split('').forEach((num) => {
-        counter += +num
-        })
-        let weightedObject = {}
-        weightedObject['string'] = numString
-        weightedObject['weight'] = counter
-        numWeights.push(weightedObject)
-    })
-    numWeights.sort(function(a, b) {
-        if (a.weight === b.weight) {
-        if (a.string < b.string) {
-            return -1
-        } else {
-            return 1
-        }
-        } else {
-        return a.weight - b.weight;
-        }
-    });
-    let returnArray = []
-    numWeights.forEach((num) => {
-        returnArray.push(num.string)
-    })
-    let arrayToString = returnArray.join(' ')
-    return arrayToString
+function orderWeight(strng) {
+    const sum = (str) => str.split('').map(val => parseInt(val)).reduce((acc, curr) => acc + curr)
+    function mySort (a, b) {
+        const sumA = sum(a);
+        const sumB = sum(b);
+        return sumA === sumB ? (a < b ? -1 : 1) : sumA - sumB
+    }
+    return strng.split(' ').sort(mySort).join(' ')
 }
