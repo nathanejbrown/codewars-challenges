@@ -11,15 +11,11 @@
 //  persistence(4) === 0 // because 4 is already a one-digit number
 
 function persistence(num) {
-    var totalPersistence = 0;
-    var numLength = num.toString().split('').length
-    if (numLength === 1) {
-      return 0;
-    }
-    while (numLength > 1) {
-      num = num.toString().split('').map(val => parseInt(val)).reduce((acc, curr) => acc * curr);
-      numLength = num.toString().split('').length
-      totalPersistence++;
-    }
-    return totalPersistence;
+  var totalPersistence = 0;
+  const numLength = (num) => num.toString().split('').length
+  while (numLength(num) > 1) {
+    num = num.toString().split('').map(val => parseInt(val)).reduce((acc, curr) => acc * curr);
+    totalPersistence++;
   }
+  return totalPersistence;
+}
