@@ -58,12 +58,12 @@ function formatDuration (seconds) {
     }
     if (objectToSentenceArray.length > 2) {
       objectToSentenceArray.splice(objectToSentenceArray.length -2, 0, 'and')
-    } 
-    if (objectToSentenceArray.length >= 7) {
-      for (x = objectToSentenceArray.length - 6; x > 0; x-=2) {
-        objectToSentenceArray[x] += ','
+      if (objectToSentenceArray.length >= 7) {
+        for (x = objectToSentenceArray.length - 6; x > 0; x-=2) {
+          objectToSentenceArray[x] += ','
+        }
       }
-    }
+    } 
     return objectToSentenceArray.join(' ')
   }
   
